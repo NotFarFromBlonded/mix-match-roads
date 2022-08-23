@@ -36,3 +36,14 @@
     transform: rotate(360deg);
   }
 }
+.resetbutton{
+  color: red;
+  font-size: larger;
+  border: none;
+  background: whitesmoke;
+}
+.resetbutton:hover{
+ background-color: red;
+ color: #282c34;
+ opacity: 0.2;
+}
