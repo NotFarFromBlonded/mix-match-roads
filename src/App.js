@@ -4,6 +4,7 @@ import { roadMaterial } from "./options";
 import SliderComponent from "./Components/SliderComponent.jsx";
 import PieChart from "./charts/PieChart.jsx";
 import PriceEmission from "./Components/PriceEmission.jsx";
+import Tableau from "tableau-react";
 
 function App() {
   const {
@@ -16,13 +17,16 @@ function App() {
     preSelected,
     handleChangePreselected,
     roadData,
-    setRoadData,
-    handleChangeReset,
     multiselectRef,
     resetValues,
   } = EmissionState();
   //const [state, setState] = useState([{name:"Bitumen", volume: 10}, {name:"Cement", volume: 12}])
   //const [rs, dispatch] = useReducer(reducer, roadData);
+
+  const options = {
+    hideTabs: true,
+    hideToolbar: true
+  };
 
   return (
     <>
@@ -80,7 +84,7 @@ function App() {
           <option value="Rigid">Rigid</option>
           <option value="Flexible">Flexible</option>
           <option value="Geopolymer">Geopolymer</option>
-          <option value="Wet Plastic">Wet Plastic</option>
+          <option value="Wet Plastic">Waste Plastic</option>
         </select>
       </div>
       <div
@@ -233,6 +237,12 @@ function App() {
             </div>
           )}
         </div>
+      </div>
+      <div>
+        {roadData.length!==0?<Tableau 
+          url = "https://public.tableau.com/views/Roaddashboard2/Dashboard1?:language=en-US&publish=yes&:display_count=n&:origin=viz_share_link"
+          option = {options}
+        />:""}
       </div>
     </>
   );
