@@ -5,6 +5,7 @@ import SliderComponent from "./Components/SliderComponent.jsx";
 import PieChart from "./charts/PieChart.jsx";
 import PriceEmission from "./Components/PriceEmission.jsx";
 import Tableau from "tableau-react";
+// import App from "./App.css";
 
 function App() {
   const {
@@ -240,9 +241,18 @@ function App() {
           )}
         </div>
       </div>
-      <div><button onClick={calculateStrength}>Calculate Strength</button></div>
-      <div><p>{`Total Strength: ${strength.toFixed(2)}`}</p></div>
-      <div>
+
+
+      <div style={{display:"flex",justifyContent:"space-around"}}>
+        <button class="strengthbutton" style={{padding: "15px 16px",borderRadius:" 5px",borderStyle: "none",backgroundColor: "cornsilk",fontSize:"20px"}} onClick={calculateStrength}>Calculate Strength
+        </button>
+        </div>
+      <div style={{paddingLeft:"20px"}}><p style={{
+                    color: "#606c38",
+                    fontFamily: "Open Sans, sans-serif",
+                    fontSize: "26px",
+                  }}>{`Total Strength: ${strength.toFixed(2)}`}</p></div>
+      <div style={{display:"flex"}}>
         {roadData.length!==0?<Tableau 
           url = "https://public.tableau.com/views/Roaddashboard2/Dashboard1?:language=en-US&publish=yes&:display_count=n&:origin=viz_share_link"
           option = {options}
