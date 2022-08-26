@@ -19,6 +19,9 @@ function App() {
     roadData,
     multiselectRef,
     resetValues,
+    feas,
+    calculateStrength,
+    strength
   } = EmissionState();
   //const [state, setState] = useState([{name:"Bitumen", volume: 10}, {name:"Cement", volume: 12}])
   //const [rs, dispatch] = useReducer(reducer, roadData);
@@ -154,22 +157,21 @@ function App() {
         >
           {preSelected.length === 0 ? (
             ""
-          ) : (
+          ) : (<>
+          <div>
             <PieChart
               chartData={roadData}
               type="volume"
               name="% Of Materials"
             />
+          </div>
+            <div>
+            <p style={{color: feas===false?'green':'red'}}>{feas===false?'Feasible':'Not Feasible'}</p>
+            </div>
+            </>
           )}
         </div>
         <div>
-          {preSelected.length === 0 ? (
-            ""
-          ) : (
-            <button classname="resetbutton" style={{ padding: "9px 18px" }} onClick={resetValues}>
-              Reset
-            </button>
-          )}
           {preSelected.length === 0 ? "" : <PriceEmission />}
           {/*{rs.length === 0?"":rs.map((r)=>{
           return (
@@ -238,6 +240,8 @@ function App() {
           )}
         </div>
       </div>
+      <div><button onClick={calculateStrength}>Calculate Strength</button></div>
+      <div><p>{`Total Strength: ${strength.toFixed(2)}`}</p></div>
       <div>
         {roadData.length!==0?<Tableau 
           url = "https://public.tableau.com/views/Roaddashboard2/Dashboard1?:language=en-US&publish=yes&:display_count=n&:origin=viz_share_link"

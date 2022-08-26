@@ -2,7 +2,7 @@ import React,{useEffect, useState} from 'react';
 import { EmissionState } from '../Context';
 
 const SliderComponent = (props) => {
-    const {roadData, setRoadData} = EmissionState();
+    const {roadData, setRoadData, feas} = EmissionState();
   return (
     <div style={{ fontFamily: 'Open Sans, sans-serif' }}>
         <p>{props.rd.name}</p>
